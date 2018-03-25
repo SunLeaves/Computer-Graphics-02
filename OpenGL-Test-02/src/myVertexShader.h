@@ -9,13 +9,10 @@ using namespace std;
 
 const char* vertextShaderSource =
 "#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"layout (location = 1) in vec3 aColor;\n"
-"out vec3 outColor;\n"
+"layout (location = 0) in vec2 aPos;\n"
 "void main()\n"
 "{\n"
-"   gl_Position = vec4(aPos, 1.0f);\n"
-"	outColor = aColor;\n"
+"   gl_Position = vec4(aPos.x/800.0, aPos.y/600.0, 0.0, 1.0);\n"
 "}\0";
 
 
