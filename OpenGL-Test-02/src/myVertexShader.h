@@ -12,7 +12,7 @@ const char* vertextShaderSource =
 "layout (location = 0) in vec2 aPos;\n"
 "void main()\n"
 "{\n"
-"   gl_Position = vec4(aPos.x/800.0, aPos.y/600.0, 0.0, 1.0);\n"
+"   gl_Position = vec4(aPos.x/1000.0, aPos.y/1000.0, 0.0, 1.0);\n"
 "}\0";
 
 

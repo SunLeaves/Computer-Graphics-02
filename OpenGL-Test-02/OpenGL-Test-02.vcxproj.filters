@@ -95,7 +95,13 @@
     <ClInclude Include="src\myVertexShader.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\myCalLines.h">
+    <ClInclude Include="src\myTriangle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\myCircle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\myGUI.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

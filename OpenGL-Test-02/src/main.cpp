@@ -8,24 +8,51 @@
 #include "myVertexShader.h"
 #include "myFragmentShader.h"
 #include "myShaderProgram.h"
-#include "myCalLines.h"
+#include "myTriangle.h"
+#include "myCircle.h"
+#include "myGUI.h"
 
-#define INIT_WIDTH 800
-#define INIT_HEIGHT 600
+#define INIT_WIDTH 1000
+#define INIT_HEIGHT 1000
 
 using namespace std;
 
-int points[12000] = { 0 };
-int pCount = 0;
-int testPoints[200] = { 0 };
+int triPoints[12000] = { 0 };
+int triCount = 0;
+int triVertices[3][2] = { 0 };
 
+int circlePoints[16000] = { 0 };
+int cirCenter[2] = { 0, 0 };
+int cirRadius = 100;
+int cirCount = 0;
 
+void drawTriangle() {
+	triCount = 0;
+	createTriangle(triVertices[0], triVertices
+		[1], triVertices[2], triCount, triPoints);
 
-void test() {
-	int A[2] = { 50, 100 };
-	int B[2] = { 250, 600 };
-	int C[2] = { 600, 300 };
-	myCalLines(A, B, C, pCount, points);
+}
+
+void drawCircle() {
+	cirCount = 0;
+	createCircle(cirCenter, cirRadius, cirCount, circlePoints);
+}
+
+void draw(myGUI* (&mygui)) {
+	int flag = mygui->getRadiochecked();
+	switch (flag) {
+	case 0:
+		mygui->getTriVertices(triVertices);
+		drawTriangle();
+		break;
+	case 1:
+		mygui->getCenter(cirCenter);
+		mygui->getRadius(cirRadius);
+		drawCircle();
+		break;
+	default:
+		break;
+	}
 }
 
 int main() {
@@ -39,7 +66,8 @@ int main() {
 	unsigned int mVAO = 0;
 
 	//  生成三角形顶点数据
-	test();
+	drawTriangle();
+	//  testCircle();
 
 	//  创建窗口
 	if (!myCreateWindow(window, INIT_WIDTH, INIT_HEIGHT)) {
@@ -81,15 +109,19 @@ int main() {
 	glBindVertexArray(mVAO);
 	glGenBuffers(1, &mVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+
 	//  复制顶点数据到缓冲内存中
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-	//  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//  glBufferData(GL_ARRAY_BUFFER, sizeof(triPoints), triPoints, GL_STATIC_DRAW);
+	//  glBufferData(GL_ARRAY_BUFFER, sizeof(circlePoints), circlePoints, GL_STATIC_DRAW);
+
 	//  链接顶点属性并其启用
 	glVertexAttribPointer(0, 2, GL_INT, GL_FALSE, 2 * sizeof(GL_INT), (void*)0);
-	//  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GL_FLOAT), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	//  绑定GUI
+	//  window绑定GUI,创建GUI对象
+	ImGui_ImplGlfwGL3_Init(window, true);
+	ImGui::StyleColorsClassic();
+	myGUI* mygui = new myGUI();
 
 	//  渲染循环
 	while (!glfwWindowShouldClose(window)) {
@@ -97,13 +129,20 @@ int main() {
 		glClearColor(0.8f, 0.8f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(testPoints), testPoints, GL_STATIC_DRAW);
+		ImGui_ImplGlfwGL3_NewFrame();
 
 		glUseProgram(shaderProgram->getShaderProgram());
-
-		glDrawArrays(GL_POINTS, 0, pCount);
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
-
+		//  创建GUI
+		mygui->createOptions();
+		draw(mygui);
+		if (mygui->getRadiochecked() == 0){
+			glBufferData(GL_ARRAY_BUFFER, sizeof(triPoints), triPoints, GL_STATIC_DRAW);
+			glDrawArrays(GL_POINTS, 0, triCount / 2);
+		} else {
+			glBufferData(GL_ARRAY_BUFFER, sizeof(circlePoints), circlePoints, GL_STATIC_DRAW);
+			glDrawArrays(GL_POINTS, 0, cirCount / 2);
+		}
+		ImGui::Render();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -116,7 +155,7 @@ int main() {
 
 	glfwTerminate();
 
-	//delete mygui;
+	delete mygui;
 	delete shaderProgram;
 	delete fragmentShader;
 	delete vertexShader;

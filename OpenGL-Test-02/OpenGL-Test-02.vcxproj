@@ -39,7 +39,9 @@
     <ClInclude Include="include\imgui\stb_textedit.h" />
     <ClInclude Include="include\imgui\stb_truetype.h" />
     <ClInclude Include="include\KHR\khrplatform.h" />
-    <ClInclude Include="src\myCalLines.h" />
+    <ClInclude Include="src\myCircle.h" />
+    <ClInclude Include="src\myGUI.h" />
+    <ClInclude Include="src\myTriangle.h" />
     <ClInclude Include="src\myFragmentShader.h" />
     <ClInclude Include="src\myShaderProgram.h" />
     <ClInclude Include="src\myVertexShader.h" />

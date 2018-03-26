@@ -36,14 +36,13 @@ void line(int x0, int x1, int y0, int y1, int& count, int (&points)[12000]) {
 	int y = y0;
 	for (int x = x0; x < x1; x++) {
 		if (steep) {
-			points[count] = y;
-			points[count + 1] = x;
+			points[count++] = y;
+			points[count++] = x;
 		}
 		else {
-			points[count] = x;
-			points[count + 1] = y;
+			points[count++] = x;
+			points[count++] = y;
 		}
-		count += 2;
 		error = error - deltay;
 		if (error < 0) {
 			y += ystep;
@@ -54,7 +53,7 @@ void line(int x0, int x1, int y0, int y1, int& count, int (&points)[12000]) {
 
 
 
-void myCalLines(int* A, int* B, int* C, int& count, int (&points)[12000]) {
+void createTriangle(int* A, int* B, int* C, int& count, int (&points)[12000]) {
 	//int count = 0;
 	line(A[0], B[0], A[1], B[1], count, points);
 	line(A[0], C[0], A[1], C[1], count, points);
