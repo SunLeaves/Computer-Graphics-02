@@ -1,3 +1,9 @@
+/*
+* 利用OpenGL绘制三角形
+* 使用ImGUI帮助测试程序
+*/
+
+
 #include <iostream>
 #include <sstream>
 #include <glad\glad.h>
