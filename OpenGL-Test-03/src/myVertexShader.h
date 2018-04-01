@@ -9,11 +9,14 @@ using namespace std;
 
 const char* vertextShaderSource =
 "#version 330 core\n"
-"layout (location = 0) in vec2 aPos;\n"
+"layout (location = 0) in vec3 aPos;\n"
+"uniform mat4 model;\n"
+"uniform mat4 view;\n"
+"uniform mat4 projection;\n"
 "void main()\n"
 "{\n"
-"   gl_Position = vec4(aPos.x/1000.0, aPos.y/1000.0, 0.0, 1.0);\n"
-"}\0";
+"   gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+"}\0"; 
 
 
 class myVertexShader {

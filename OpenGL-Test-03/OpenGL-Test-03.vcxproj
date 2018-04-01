@@ -133,6 +133,29 @@
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\glfw\glfw3.h" />
     <ClInclude Include="include\glfw\glfw3native.h" />
+    <ClInclude Include="include\glm\common.hpp" />
+    <ClInclude Include="include\glm\exponential.hpp" />
+    <ClInclude Include="include\glm\ext.hpp" />
+    <ClInclude Include="include\glm\fwd.hpp" />
+    <ClInclude Include="include\glm\geometric.hpp" />
+    <ClInclude Include="include\glm\glm.hpp" />
+    <ClInclude Include="include\glm\integer.hpp" />
+    <ClInclude Include="include\glm\mat2x2.hpp" />
+    <ClInclude Include="include\glm\mat2x3.hpp" />
+    <ClInclude Include="include\glm\mat2x4.hpp" />
+    <ClInclude Include="include\glm\mat3x2.hpp" />
+    <ClInclude Include="include\glm\mat3x3.hpp" />
+    <ClInclude Include="include\glm\mat3x4.hpp" />
+    <ClInclude Include="include\glm\mat4x2.hpp" />
+    <ClInclude Include="include\glm\mat4x3.hpp" />
+    <ClInclude Include="include\glm\mat4x4.hpp" />
+    <ClInclude Include="include\glm\matrix.hpp" />
+    <ClInclude Include="include\glm\packing.hpp" />
+    <ClInclude Include="include\glm\trigonometric.hpp" />
+    <ClInclude Include="include\glm\vec2.hpp" />
+    <ClInclude Include="include\glm\vec3.hpp" />
+    <ClInclude Include="include\glm\vec4.hpp" />
+    <ClInclude Include="include\glm\vector_relational.hpp" />
     <ClInclude Include="include\imgui\imconfig.h" />
     <ClInclude Include="include\imgui\imgui.h" />
     <ClInclude Include="include\imgui\imgui_impl_glfw_gl3.h" />
@@ -146,6 +169,9 @@
     <ClInclude Include="src\myShaderProgram.h" />
     <ClInclude Include="src\myVertexShader.h" />
     <ClInclude Include="src\myWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="include\glm\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
