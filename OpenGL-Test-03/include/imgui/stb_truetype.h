@@ -2454,7 +2454,7 @@ static void stbtt__rasterize_sorted_edges(stbtt__bitmap *result, stbtt__edge *e,
       STBTT_memset(scanline, 0, result->w);
       for (s=0; s < vsubsample; ++s) {
          // find center of pixel for this scanline
-         float scan_y = y + 0.5f;
+         float scan_y = y + 0.2f;
          stbtt__active_edge **step = &active;
 
          // update all active edges;
@@ -2804,7 +2804,7 @@ static void stbtt__rasterize_sorted_edges(stbtt__bitmap *result, stbtt__edge *e,
             int m;
             sum += scanline2[i];
             k = scanline[i] + sum;
-            k = (float) STBTT_fabs(k)*255 + 0.5f;
+            k = (float) STBTT_fabs(k)*255 + 0.2f;
             m = (int) k;
             if (m > 255) m = 255;
             result->pixels[j*result->stride + i] = (unsigned char) m;
@@ -3289,11 +3289,11 @@ static int stbtt_BakeFontBitmap_internal(unsigned char *data, int offset,  // fo
 
 STBTT_DEF void stbtt_GetBakedQuad(stbtt_bakedchar *chardata, int pw, int ph, int char_index, float *xpos, float *ypos, stbtt_aligned_quad *q, int opengl_fillrule)
 {
-   float d3d_bias = opengl_fillrule ? 0 : -0.5f;
+   float d3d_bias = opengl_fillrule ? 0 : -0.2f;
    float ipw = 1.0f / pw, iph = 1.0f / ph;
    stbtt_bakedchar *b = chardata + char_index;
-   int round_x = STBTT_ifloor((*xpos + b->xoff) + 0.5f);
-   int round_y = STBTT_ifloor((*ypos + b->yoff) + 0.5f);
+   int round_x = STBTT_ifloor((*xpos + b->xoff) + 0.2f);
+   int round_y = STBTT_ifloor((*ypos + b->yoff) + 0.2f);
 
    q->x0 = round_x + d3d_bias;
    q->y0 = round_y + d3d_bias;
@@ -3741,8 +3741,8 @@ STBTT_DEF void stbtt_GetPackedQuad(stbtt_packedchar *chardata, int pw, int ph, i
    stbtt_packedchar *b = chardata + char_index;
 
    if (align_to_integer) {
-      float x = (float) STBTT_ifloor((*xpos + b->xoff) + 0.5f);
-      float y = (float) STBTT_ifloor((*ypos + b->yoff) + 0.5f);
+      float x = (float) STBTT_ifloor((*xpos + b->xoff) + 0.2f);
+      float y = (float) STBTT_ifloor((*ypos + b->yoff) + 0.2f);
       q->x0 = x;
       q->y0 = y;
       q->x1 = x + b->xoff2 - b->xoff;
@@ -3995,12 +3995,12 @@ STBTT_DEF int stbtt_CompareUTF8toUTF16_bigendian(const char *s1, int len1, const
 //   0.9  (2014-08-07) support certain mac/iOS fonts without an MS platformID
 //   0.8b (2014-07-07) fix a warning
 //   0.8  (2014-05-25) fix a few more warnings
-//   0.7  (2013-09-25) bugfix: subpixel glyph bug fixed in 0.5 had come back
+//   0.7  (2013-09-25) bugfix: subpixel glyph bug fixed in 0.2 had come back
 //   0.6c (2012-07-24) improve documentation
 //   0.6b (2012-07-20) fix a few more warnings
 //   0.6  (2012-07-17) fix warnings; added stbtt_ScaleForMappingEmToPixels,
 //                        stbtt_GetFontBoundingBox, stbtt_IsGlyphEmpty
-//   0.5  (2011-12-09) bugfixes:
+//   0.2  (2011-12-09) bugfixes:
 //                        subpixel glyph renderer computed wrong bounding box
 //                        first vertex of shape can be off-curve (FreeSans)
 //   0.4b (2011-12-03) fixed an error in the font baking example

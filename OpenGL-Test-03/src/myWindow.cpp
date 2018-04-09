@@ -1,47 +1,47 @@
 #include "myWindow.h"
 
 float init_vertices[] = {
-	-0.5f, -0.5f, -0.5f,
-	0.5f, -0.5f, -0.5f,
-	0.5f,  0.5f, -0.5f,
-	0.5f,  0.5f, -0.5f,
-	-0.5f,  0.5f, -0.5f,
-	-0.5f, -0.5f, -0.5f,
+	-0.2f, -0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
+	0.2f, -0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
+	0.2f,  0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
+	0.2f,  0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
+	-0.2f,  0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
+	-0.2f, -0.2f, -0.2f, 0.5f, 0.0f, 0.0f,
 
-	-0.5f, -0.5f,  0.5f,
-	0.5f, -0.5f,  0.5f,
-	0.5f,  0.5f,  0.5f,
-	0.5f,  0.5f,  0.5f,
-	-0.5f,  0.5f,  0.5f,
-	-0.5f, -0.5f,  0.5f,
+	-0.2f, -0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
+	0.2f, -0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
+	0.2f,  0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
+	0.2f,  0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
+	-0.2f,  0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
+	-0.2f, -0.2f,  0.2f, 1.0f, 0.2f, 0.2f,
 
-	-0.5f,  0.5f,  0.5f,
-	-0.5f,  0.5f, -0.5f,
-	-0.5f, -0.5f, -0.5f,
-	-0.5f, -0.5f, -0.5f,
-	-0.5f, -0.5f,  0.5f,
-	-0.5f,  0.5f,  0.5f,
+	-0.2f,  0.2f,  0.2f, 0.0f, 0.5f, 0.0f,
+	-0.2f,  0.2f, -0.2f, 0.0f, 0.5f, 0.0f,
+	-0.2f, -0.2f, -0.2f, 0.0f, 0.5f, 0.0f,
+	-0.2f, -0.2f, -0.2f, 0.0f, 0.5f, 0.0f,
+	-0.2f, -0.2f,  0.2f, 0.0f, 0.5f, 0.0f,
+	-0.2f,  0.2f,  0.2f, 0.0f, 0.5f, 0.0f,
 
-	0.5f,  0.5f,  0.5f,
-	0.5f,  0.5f, -0.5f,
-	0.5f, -0.5f, -0.5f,
-	0.5f, -0.5f, -0.5f,
-	0.5f, -0.5f,  0.5f,
-	0.5f,  0.5f,  0.5f,
+	0.2f,  0.2f,  0.2f, 0.0f, 1.0f, 0.5f,
+	0.2f,  0.2f, -0.2f, 0.0f, 1.0f, 0.5f,
+	0.2f, -0.2f, -0.2f, 0.0f, 1.0f, 0.5f,
+	0.2f, -0.2f, -0.2f, 0.0f, 1.0f, 0.5f,
+	0.2f, -0.2f,  0.2f, 0.0f, 1.0f, 0.5f,
+	0.2f,  0.2f,  0.2f, 0.0f, 1.0f, 0.5f,
 
-	-0.5f, -0.5f, -0.5f,
-	0.5f, -0.5f, -0.5f,
-	0.5f, -0.5f,  0.5f,
-	0.5f, -0.5f,  0.5f,
-	-0.5f, -0.5f,  0.5f,
-	-0.5f, -0.5f, -0.5f,
+	-0.2f, -0.2f, -0.2f, 1.0f, 0.0f, 1.0f,
+	0.2f, -0.2f, -0.2f, 1.0f, 0.0f, 1.0f,
+	0.2f, -0.2f,  0.2f, 1.0f, 0.0f, 1.0f,
+	0.2f, -0.2f,  0.2f, 1.0f, 0.0f, 1.0f,
+	-0.2f, -0.2f,  0.2f, 1.0f, 0.0f, 1.0f,
+	-0.2f, -0.2f, -0.2f, 1.0f, 0.0f, 1.0f,
 
-	-0.5f,  0.5f, -0.5f,
-	0.5f,  0.5f, -0.5f,
-	0.5f,  0.5f,  0.5f,
-	0.5f,  0.5f,  0.5f,
-	-0.5f,  0.5f,  0.5f,
-	-0.5f,  0.5f, -0.5f
+	-0.2f,  0.2f, -0.2f, 1.0f, 1.0f, 1.0f,
+	0.2f,  0.2f, -0.2f, 1.0f, 1.0f, 1.0f,
+	0.2f,  0.2f,  0.2f, 1.0f, 1.0f, 1.0f,
+	0.2f,  0.2f,  0.2f, 1.0f, 1.0f, 1.0f,
+	-0.2f,  0.2f,  0.2f, 1.0f, 1.0f, 1.0f,
+	-0.2f,  0.2f, -0.2f, 1.0f, 1.0f, 1.0f
 };
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -59,7 +59,7 @@ bool myCreateWindow(GLFWwindow* (&window), int width, int height) {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	window = glfwCreateWindow(width, height, "Triangle", NULL, NULL);
+	window = glfwCreateWindow(width, height, "Cube", NULL, NULL);
 	if (window == NULL) {
 		cout << "Failed to create a window." << endl;
 		return false;
@@ -83,10 +83,10 @@ bool myCreateWindow(GLFWwindow* (&window), int width, int height) {
 	return true;
 }
 
-void getPoints(float(&vertices)[36][3]) {
+void getPoints(float(&vertices)[36][6]) {
 	for (int i = 0; i < 36; i++) {
-		for (int j = 0; j < 3; j++) {
-			vertices[i][j] = init_vertices[i * 3 + j];
+		for (int j = 0; j < 6; j++) {
+			vertices[i][j] = init_vertices[i * 6 + j];
 		}
 	}
 }

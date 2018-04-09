@@ -10,6 +10,6 @@ using namespace std;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void myProcessInput(GLFWwindow* window);
 bool myCreateWindow(GLFWwindow* (&window), int width, int height);
-void getPoints(float(&vertices)[36][3]);
+void getPoints(float(&vertices)[36][6]);
 
 #endif

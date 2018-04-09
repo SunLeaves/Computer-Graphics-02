@@ -95,9 +95,6 @@
     <ClInclude Include="src\myWindow.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\myCube.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="include\khr\khrplatform.h">
       <Filter>include\khr</Filter>
     </ClInclude>
@@ -169,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="include\glm\vector_relational.hpp">
       <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\myGUI.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\myTransform.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -307,7 +307,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             {
                 ImGui::BeginTooltip();
                 ImGui::Text("I am a fancy tooltip");
-                static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
+                static float arr[] = { 0.6f, 0.1f, 1.0f, 0.2f, 0.92f, 0.1f, 0.2f };
                 ImGui::PlotLines("Curve", arr, IM_ARRAYSIZE(arr));
                 ImGui::EndTooltip();
             }
@@ -386,7 +386,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             }
 
             static float col1[3] = { 1.0f,0.0f,0.2f };
-            static float col2[4] = { 0.4f,0.7f,0.0f,0.5f };
+            static float col2[4] = { 0.4f,0.7f,0.0f,0.2f };
             ImGui::ColorEdit3("color 1", col1);
             ImGui::SameLine(); ShowHelpMarker("Click on the colored square to open a color picker.\nRight-click on the colored square to show options.\nCTRL+click on individual component to input value.\n");
 
@@ -582,8 +582,8 @@ void ImGui::ShowDemoWindow(bool* p_open)
             {
                 ImGui::BeginTooltip();
                 float focus_sz = 32.0f;
-                float focus_x = io.MousePos.x - pos.x - focus_sz * 0.5f; if (focus_x < 0.0f) focus_x = 0.0f; else if (focus_x > my_tex_w - focus_sz) focus_x = my_tex_w - focus_sz;
-                float focus_y = io.MousePos.y - pos.y - focus_sz * 0.5f; if (focus_y < 0.0f) focus_y = 0.0f; else if (focus_y > my_tex_h - focus_sz) focus_y = my_tex_h - focus_sz;
+                float focus_x = io.MousePos.x - pos.x - focus_sz * 0.2f; if (focus_x < 0.0f) focus_x = 0.0f; else if (focus_x > my_tex_w - focus_sz) focus_x = my_tex_w - focus_sz;
+                float focus_y = io.MousePos.y - pos.y - focus_sz * 0.2f; if (focus_y < 0.0f) focus_y = 0.0f; else if (focus_y > my_tex_h - focus_sz) focus_y = my_tex_h - focus_sz;
                 ImGui::Text("Min: (%.2f, %.2f)", focus_x, focus_y);
                 ImGui::Text("Max: (%.2f, %.2f)", focus_x + focus_sz, focus_y + focus_sz);
                 ImVec2 uv0 = ImVec2((focus_x) / my_tex_w, (focus_y) / my_tex_h);
@@ -710,7 +710,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             static bool animate = true;
             ImGui::Checkbox("Animate", &animate);
 
-            static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
+            static float arr[] = { 0.6f, 0.1f, 1.0f, 0.2f, 0.92f, 0.1f, 0.2f };
             ImGui::PlotLines("Frame Times", arr, IM_ARRAYSIZE(arr));
 
             // Create a dummy array of contiguous float values to plot
@@ -865,7 +865,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             static bool alpha_bar = true;
             static bool side_preview = true;
             static bool ref_color = false;
-            static ImVec4 ref_color_v(1.0f,0.0f,1.0f,0.5f);
+            static ImVec4 ref_color_v(1.0f,0.0f,1.0f,0.2f);
             static int inputs_mode = 2;
             static int picker_mode = 0;
             ImGui::Checkbox("With Alpha", &alpha);
@@ -962,9 +962,9 @@ void ImGui::ShowDemoWindow(bool* p_open)
             {
                 if (i > 0) ImGui::SameLine();
                 ImGui::PushID(i);
-                ImGui::PushStyleColor(ImGuiCol_FrameBg, (ImVec4)ImColor::HSV(i/7.0f, 0.5f, 0.5f));
-                ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, (ImVec4)ImColor::HSV(i/7.0f, 0.6f, 0.5f));
-                ImGui::PushStyleColor(ImGuiCol_FrameBgActive, (ImVec4)ImColor::HSV(i/7.0f, 0.7f, 0.5f));
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, (ImVec4)ImColor::HSV(i/7.0f, 0.2f, 0.2f));
+                ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, (ImVec4)ImColor::HSV(i/7.0f, 0.6f, 0.2f));
+                ImGui::PushStyleColor(ImGuiCol_FrameBgActive, (ImVec4)ImColor::HSV(i/7.0f, 0.7f, 0.2f));
                 ImGui::PushStyleColor(ImGuiCol_SliderGrab, (ImVec4)ImColor::HSV(i/7.0f, 0.9f, 0.9f));
                 ImGui::VSliderFloat("##v", ImVec2(18,160), &values[i], 0.0f, 1.0f, "");
                 if (ImGui::IsItemActive() || ImGui::IsItemHovered())
@@ -1027,7 +1027,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             goto_line |= ImGui::InputInt("##Line", &line, 0, 0, ImGuiInputTextFlags_EnterReturnsTrue);
             ImGui::PopItemWidth();
 
-            ImGui::BeginChild("Sub1", ImVec2(ImGui::GetWindowContentRegionWidth() * 0.5f,300), false, ImGuiWindowFlags_HorizontalScrollbar | (disable_mouse_wheel ? ImGuiWindowFlags_NoScrollWithMouse : 0));
+            ImGui::BeginChild("Sub1", ImVec2(ImGui::GetWindowContentRegionWidth() * 0.2f,300), false, ImGuiWindowFlags_HorizontalScrollbar | (disable_mouse_wheel ? ImGuiWindowFlags_NoScrollWithMouse : 0));
             for (int i = 0; i < 100; i++)
             {
                 ImGui::Text("%04d: scrollable region", i);
@@ -1067,15 +1067,15 @@ void ImGui::ShowDemoWindow(bool* p_open)
             ImGui::DragFloat("float##1", &f);
             ImGui::PopItemWidth();
 
-            ImGui::Text("PushItemWidth(GetWindowWidth() * 0.5f)");
+            ImGui::Text("PushItemWidth(GetWindowWidth() * 0.2f)");
             ImGui::SameLine(); ShowHelpMarker("Half of window width.");
-            ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.5f);
+            ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.2f);
             ImGui::DragFloat("float##2", &f);
             ImGui::PopItemWidth();
 
-            ImGui::Text("PushItemWidth(GetContentRegionAvailWidth() * 0.5f)");
+            ImGui::Text("PushItemWidth(GetContentRegionAvailWidth() * 0.2f)");
             ImGui::SameLine(); ShowHelpMarker("Half of available width.\n(~ right-cursor_pos)\n(works within a column set)");
-            ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * 0.5f);
+            ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * 0.2f);
             ImGui::DragFloat("float##3", &f);
             ImGui::PopItemWidth();
 
@@ -1188,12 +1188,12 @@ void ImGui::ShowDemoWindow(bool* p_open)
             }
             // Capture the group size and create widgets using the same size
             ImVec2 size = ImGui::GetItemRectSize();
-            const float values[5] = { 0.5f, 0.20f, 0.80f, 0.60f, 0.25f };
+            const float values[5] = { 0.2f, 0.20f, 0.80f, 0.60f, 0.25f };
             ImGui::PlotHistogram("##values", values, IM_ARRAYSIZE(values), 0, NULL, 0.0f, 1.0f, size);
 
-            ImGui::Button("ACTION", ImVec2((size.x - ImGui::GetStyle().ItemSpacing.x)*0.5f,size.y));
+            ImGui::Button("ACTION", ImVec2((size.x - ImGui::GetStyle().ItemSpacing.x)*0.2f,size.y));
             ImGui::SameLine();
-            ImGui::Button("REACTION", ImVec2((size.x - ImGui::GetStyle().ItemSpacing.x)*0.5f,size.y));
+            ImGui::Button("REACTION", ImVec2((size.x - ImGui::GetStyle().ItemSpacing.x)*0.2f,size.y));
             ImGui::EndGroup();
             ImGui::SameLine();
 
@@ -1289,7 +1289,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
                     if (track && line == track_line)
                     {
                         ImGui::TextColored(ImColor(255,255,0), "Line %d", line);
-                        ImGui::SetScrollHere(i * 0.25f); // 0.0f:top, 0.5f:center, 1.0f:bottom
+                        ImGui::SetScrollHere(i * 0.25f); // 0.0f:top, 0.2f:center, 1.0f:bottom
                     }
                     else
                     {
@@ -1355,7 +1355,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
         {
             static ImVec2 size(100, 100), offset(50, 20);
             ImGui::TextWrapped("On a per-widget basis we are occasionally clipping text CPU-side if it won't fit in its frame. Otherwise we are doing coarser clipping + passing a scissor rectangle to the renderer. The system is designed to try minimizing both execution and CPU/GPU rendering cost.");
-            ImGui::DragFloat2("size", (float*)&size, 0.5f, 0.0f, 200.0f, "%.0f");
+            ImGui::DragFloat2("size", (float*)&size, 0.2f, 0.0f, 200.0f, "%.0f");
             ImGui::TextWrapped("(Click and drag)");
             ImVec2 pos = ImGui::GetCursorScreenPos();
             ImVec4 clip_rect(pos.x, pos.y, pos.x+size.x, pos.y+size.y);
@@ -1445,7 +1445,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
             //       OpenPopup(id);
             //    return BeginPopup(id);
             // For more advanced uses you may want to replicate and cuztomize this code. This the comments inside BeginPopupContextItem() implementation.
-            static float value = 0.5f;
+            static float value = 0.2f;
             ImGui::Text("Value = %.3f (<-- right-click here)", value);
             if (ImGui::BeginPopupContextItem("item context menu"))
             {
@@ -1505,7 +1505,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
                 ImGui::Text("Hello from Stacked The First\nUsing style.Colors[ImGuiCol_ModalWindowDarkening] for darkening.");
                 static int item = 1;
                 ImGui::Combo("Combo", &item, "aaaa\0bbbb\0cccc\0dddd\0eeee\0\0");
-                static float color[4] = { 0.4f,0.7f,0.0f,0.5f };
+                static float color[4] = { 0.4f,0.7f,0.0f,0.2f };
                 ImGui::ColorEdit4("color", color);  // This is to test behavior of stacked regular popups over a modal
 
                 if (ImGui::Button("Add another modal.."))
@@ -1983,7 +1983,7 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
     if (ref == NULL)
         ref = &ref_saved_style;
 
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.50f);
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.20f);
 
     if (ImGui::ShowStyleSelector("Colors##Selector"))
         ref_saved_style = style;
@@ -2251,7 +2251,7 @@ static void ShowExampleMenuFile()
         for (int i = 0; i < 10; i++)
             ImGui::Text("Scrolling Text %d", i);
         ImGui::EndChild();
-        static float f = 0.5f;
+        static float f = 0.2f;
         static int n = 0;
         static bool b = true;
         ImGui::SliderFloat("Value", &f, 0.0f, 1.0f);
@@ -2304,7 +2304,7 @@ static void ShowExampleAppConstrainedResize(bool* p_open)
     struct CustomConstraints // Helper functions to demonstrate programmatic constraints
     {
         static void Square(ImGuiSizeConstraintCallbackData* data) { data->DesiredSize = ImVec2(IM_MAX(data->DesiredSize.x, data->DesiredSize.y), IM_MAX(data->DesiredSize.x, data->DesiredSize.y)); }
-        static void Step(ImGuiSizeConstraintCallbackData* data)   { float step = (float)(int)(intptr_t)data->UserData; data->DesiredSize = ImVec2((int)(data->DesiredSize.x / step + 0.5f) * step, (int)(data->DesiredSize.y / step + 0.5f) * step); }
+        static void Step(ImGuiSizeConstraintCallbackData* data)   { float step = (float)(int)(intptr_t)data->UserData; data->DesiredSize = ImVec2((int)(data->DesiredSize.x / step + 0.2f) * step, (int)(data->DesiredSize.y / step + 0.2f) * step); }
     };
 
     static bool auto_resize = false;
@@ -2428,11 +2428,11 @@ static void ShowExampleAppCustomRendering(bool* p_open)
         for (int n = 0; n < 2; n++)
         {
             float thickness = (n == 0) ? 1.0f : 4.0f;
-            draw_list->AddCircle(ImVec2(x+sz*0.5f, y+sz*0.5f), sz*0.5f, col32, 20, thickness); x += sz+spacing;
+            draw_list->AddCircle(ImVec2(x+sz*0.2f, y+sz*0.2f), sz*0.2f, col32, 20, thickness); x += sz+spacing;
             draw_list->AddRect(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, 0.0f, ImDrawCornerFlags_All, thickness); x += sz+spacing;
             draw_list->AddRect(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, 10.0f, ImDrawCornerFlags_All, thickness); x += sz+spacing;
             draw_list->AddRect(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, 10.0f, ImDrawCornerFlags_TopLeft|ImDrawCornerFlags_BotRight, thickness); x += sz+spacing;
-            draw_list->AddTriangle(ImVec2(x+sz*0.5f, y), ImVec2(x+sz,y+sz-0.5f), ImVec2(x,y+sz-0.5f), col32, thickness); x += sz+spacing;
+            draw_list->AddTriangle(ImVec2(x+sz*0.2f, y), ImVec2(x+sz,y+sz-0.2f), ImVec2(x,y+sz-0.2f), col32, thickness); x += sz+spacing;
             draw_list->AddLine(ImVec2(x, y), ImVec2(x+sz, y   ), col32, thickness); x += sz+spacing;
             draw_list->AddLine(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, thickness); x += sz+spacing;
             draw_list->AddLine(ImVec2(x, y), ImVec2(x,    y+sz), col32, thickness); x += spacing;
@@ -2440,11 +2440,11 @@ static void ShowExampleAppCustomRendering(bool* p_open)
             x = p.x + 4;
             y += sz+spacing;
         }
-        draw_list->AddCircleFilled(ImVec2(x+sz*0.5f, y+sz*0.5f), sz*0.5f, col32, 32); x += sz+spacing;
+        draw_list->AddCircleFilled(ImVec2(x+sz*0.2f, y+sz*0.2f), sz*0.2f, col32, 32); x += sz+spacing;
         draw_list->AddRectFilled(ImVec2(x, y), ImVec2(x+sz, y+sz), col32); x += sz+spacing;
         draw_list->AddRectFilled(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, 10.0f); x += sz+spacing;
         draw_list->AddRectFilled(ImVec2(x, y), ImVec2(x+sz, y+sz), col32, 10.0f, ImDrawCornerFlags_TopLeft|ImDrawCornerFlags_BotRight); x += sz+spacing;
-        draw_list->AddTriangleFilled(ImVec2(x+sz*0.5f, y), ImVec2(x+sz,y+sz-0.5f), ImVec2(x,y+sz-0.5f), col32); x += sz+spacing;
+        draw_list->AddTriangleFilled(ImVec2(x+sz*0.2f, y), ImVec2(x+sz,y+sz-0.2f), ImVec2(x,y+sz-0.2f), col32); x += sz+spacing;
         draw_list->AddRectFilledMultiColor(ImVec2(x, y), ImVec2(x+sz, y+sz), ImColor(0,0,0), ImColor(255,0,0), ImColor(255,255,0), ImColor(0,255,0));
         ImGui::Dummy(ImVec2((sz+spacing)*8, (sz+spacing)*3));
     }
@@ -2623,7 +2623,7 @@ struct ExampleAppConsole
                 continue;
             ImVec4 col = ImVec4(1.0f,1.0f,1.0f,1.0f); // A better implementation may store a type per-item. For the sample let's just parse the text.
             if (strstr(item, "[error]")) col = ImColor(1.0f,0.4f,0.4f,1.0f);
-            else if (strncmp(item, "# ", 2) == 0) col = ImColor(1.0f,0.78f,0.58f,1.0f);
+            else if (strncmp(item, "# ", 2) == 0) col = ImColor(1.0f,0.78f,0.28f,1.0f);
             ImGui::PushStyleColor(ImGuiCol_Text, col);
             ImGui::TextUnformatted(item);
             ImGui::PopStyleColor();

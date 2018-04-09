@@ -9,10 +9,11 @@ using namespace std;
 
 const char* fragmentShaderSource =
 "#version 330 core\n"
+"in vec3 outColor;\n"
 "out vec4 FragColor;\n"
 "void main()\n"
 "{\n"
-"   FragColor = vec4(0.5f, 0.5f, 0.5f, 1.0f);\n"
+"	FragColor = vec4(outColor, 1.0f);\n"
 "}\n\0";;
 
 

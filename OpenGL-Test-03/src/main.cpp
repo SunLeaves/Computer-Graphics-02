@@ -7,38 +7,38 @@
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\type_ptr.hpp>
 
-
 #include "myWindow.h"
 #include "myVertexShader.h"
 #include "myFragmentShader.h"
 #include "myShaderProgram.h"
-
+#include "myGUI.h"
+#include "myTransform.h"
 
 #define INIT_WIDTH 900
 #define INIT_HEIGHT 900
 
 using namespace std;
 
-float vertices[36][3] = {0};
+float vertices[36][6] = {0};
 
 int main() {
 	GLFWwindow* window = NULL;
 	myVertexShader* vertexShader = NULL;
 	myFragmentShader* fragmentShader = NULL;
 	myShaderProgram* shaderProgram = NULL;
+	myGUI* mygui = NULL;
 
 	unsigned int mVAO = 0;
 	unsigned int mVBO = 0;
 
-	//  旋转矩阵
-	glm::mat4 model;
-	glm::mat4 view;
-	glm::mat4 projection;
+	// 矩阵
+	glm::mat4 scale;
+	glm::mat4 trans;
+	glm::mat4 rotate;
+	glm::mat4 identity;
+	rotate = glm::rotate(rotate, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 1.0f));
 
-	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(0.0f, 1.0f, 1.0f));
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-	projection = glm::perspective(glm::radians(45.0f), (float)INIT_WIDTH / INIT_HEIGHT, 0.1f, 100.0f);
-
+	//  设置顶点矩阵
 	getPoints(vertices);
 
 	//  创建窗口
@@ -90,44 +90,81 @@ int main() {
 
 	//  复制顶点数据到缓冲内存中，链接顶点属性
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GL_FLOAT), (void*)0);
+	//  位置属性
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GL_FLOAT), (void*)0);
+	//  颜色属性
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GL_FLOAT), (void*)(3*sizeof(GL_FLOAT)));
 	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 
 	//  获取uniform位置
-	int modelPosition = glGetUniformLocation(shaderProgram->getShaderProgram(), "model"),
-		viewPosition = glGetUniformLocation(shaderProgram->getShaderProgram(), "view"),
-		projectionPosition = glGetUniformLocation(shaderProgram->getShaderProgram(), "projection");
+	int scaleLoc = glGetUniformLocation(shaderProgram->getShaderProgram(), "scale"),
+		transLoc = glGetUniformLocation(shaderProgram->getShaderProgram(), "trans"),
+		rotateLoc = glGetUniformLocation(shaderProgram->getShaderProgram(), "rotate");
+
 	//  更新uniform值
 	glUseProgram(shaderProgram->getShaderProgram());
-	glUniformMatrix4fv(modelPosition, 1, GL_FALSE, &model[0][0]);
-	glUseProgram(shaderProgram->getShaderProgram());
-	glUniformMatrix4fv(viewPosition, 1, GL_FALSE, &view[0][0]);
-	glUseProgram(shaderProgram->getShaderProgram());
-	glUniformMatrix4fv(projectionPosition, 1, GL_FALSE, &projection[0][0]);
+	glUniformMatrix4fv(scaleLoc, 1, GL_FALSE, &scale[0][0]);
+	glUniformMatrix4fv(rotateLoc, 1, GL_FALSE, &rotate[0][0]);
+	glUniformMatrix4fv(transLoc, 1, GL_FALSE, &trans[0][0]);
 
 	//  绑定GUI到window窗口
-	//ImGui_ImplGlfwGL3_Init(window, true);
-	//ImGui::StyleColorsClassic();
+	mygui = new myGUI();
+	ImGui_ImplGlfwGL3_Init(window, true);
+	ImGui::StyleColorsClassic();
 
 	//  启用深度测试
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 
+	float nowTime = 0.0f, rest = 0.0f;
+
 	//  渲染循环
 	while (!glfwWindowShouldClose(window)) {
 		myProcessInput(window);
-		glClearColor(0.8f, 0.8f, 0.9f, 1.0f);
+		glClearColor(0.5f, 0.8f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//ImGui_ImplGlfwGL3_NewFrame();
+		//  创建GUI界面
+		ImGui_ImplGlfwGL3_NewFrame();
+		mygui->createOptions();
+		
 		glUseProgram(shaderProgram->getShaderProgram());
 
-		//  更新旋转矩阵
-		//model = glGetUniformLocation(shaderProgram->getShaderProgram(), "projection");
-		model = glm::rotate(model, (float)glfwGetTime()* 0.00001f, glm::vec3(0.0f, 1.0f, 1.0f));
-		glUniformMatrix4fv(modelPosition, 1, GL_FALSE, &model[0][0]);
+		switch (mygui->getTransSelected())
+		{
+		case 0:
+			changeMatrix(trans, 0);
+			scale = identity;
+			glUniformMatrix4fv(transLoc, 1, GL_FALSE, &trans[0][0]);
+			glUniformMatrix4fv(scaleLoc, 1, GL_FALSE, &scale[0][0]);
+			break;
+		case 1:
+			trans = identity;
+			changeMatrix(scale, 1);
+			glUniformMatrix4fv(transLoc, 1, GL_FALSE, &trans[0][0]);
+			glUniformMatrix4fv(scaleLoc, 1, GL_FALSE, &scale[0][0]);
+			break;
+		case 2:
+			trans = identity;
+			changeMatrix(scale, 2);
+			glUniformMatrix4fv(transLoc, 1, GL_FALSE, &trans[0][0]);
+			glUniformMatrix4fv(scaleLoc, 1, GL_FALSE, &scale[0][0]);
+			break;
+		case 3:
+			changeMatrix(rotate, 3);
+			scale = trans = identity;
+			glUniformMatrix4fv(transLoc, 1, GL_FALSE, &trans[0][0]);
+			glUniformMatrix4fv(scaleLoc, 1, GL_FALSE, &scale[0][0]);
+			glUniformMatrix4fv(rotateLoc, 1, GL_FALSE, &rotate[0][0]);
+			break;
+		default:
+			break;
+		}
 
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+		mygui->render();
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -143,6 +180,7 @@ int main() {
 	delete shaderProgram;
 	delete fragmentShader;
 	delete vertexShader;
+	delete mygui;
 	system("pause");
 	return 0;
 
