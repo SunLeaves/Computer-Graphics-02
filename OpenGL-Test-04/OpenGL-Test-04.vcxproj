@@ -174,7 +174,6 @@
     <ClInclude Include="src\myFragmentShader.h" />
     <ClInclude Include="src\myGUI.h" />
     <ClInclude Include="src\myShaderProgram.h" />
-    <ClInclude Include="src\myTransform.h" />
     <ClInclude Include="src\myVertexShader.h" />
     <ClInclude Include="src\myWindow.h" />
   </ItemGroup>

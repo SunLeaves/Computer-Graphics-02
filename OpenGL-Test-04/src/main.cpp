@@ -11,7 +11,6 @@
 #include "myVertexShader.h"
 #include "myFragmentShader.h"
 #include "myShaderProgram.h"
-#include "myTransform.h"
 #include "myGUI.h"
 
 #define INIT_WIDTH 900
