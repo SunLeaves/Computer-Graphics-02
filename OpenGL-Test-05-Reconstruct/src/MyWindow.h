@@ -9,7 +9,7 @@ using namespace std;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void myProcessInput(GLFWwindow* window);
-bool myCreateWindow(GLFWwindow* (&window), int width, int height);
+bool myCreateWindow(GLFWwindow* (&window), string name, int width, int height);
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -21,13 +21,13 @@ void myProcessInput(GLFWwindow* window) {
 		glfwSetWindowShouldClose(window, true);
 }
 
-bool myCreateWindow(GLFWwindow* (&window), int width, int height) {
+bool myCreateWindow(GLFWwindow* (&window), string name, int width, int height) {
 	//  ÊµÀý»¯GLFW´°¿Ú
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	window = glfwCreateWindow(width, height, "HW5", NULL, NULL);
+	window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
 	if (window == NULL) {
 		cout << "Failed to create a window." << endl;
 		return false;

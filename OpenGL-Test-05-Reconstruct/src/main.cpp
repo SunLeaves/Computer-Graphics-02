@@ -84,7 +84,7 @@ int main() {
 
 	//  GUI控件数据
 	int shadingMethod = 0;
-	float ambientFactor = 0.1f;
+	float ambientFactor = 0.2f;
 	float diffuseFactor = 1.0f;
 	float specularFactor = 0.5f;
 	int shininess = 128;
@@ -101,7 +101,7 @@ int main() {
 	projection = glm::perspective(glm::radians(20.0f), 1.0f, 0.01f, 100.0f);
 
 	//  创建窗口
-	if (!myCreateWindow(window, INIT_WIDTH, INIT_HEIGHT)) {
+	if (!myCreateWindow(window, "HW6", INIT_WIDTH, INIT_HEIGHT)) {
 		return -1;
 	}
 
