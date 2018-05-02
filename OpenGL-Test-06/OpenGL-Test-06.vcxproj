@@ -19,12 +19,63 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\thirdPart\include\glad\glad.c" />
+    <ClCompile Include="..\thirdPart\include\imgui\imgui.cpp" />
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\thirdPart\include\glad\glad.h" />
+    <ClInclude Include="..\thirdPart\include\glm\common.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\exponential.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\ext.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\fwd.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\geometric.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\glm.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\integer.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat2x2.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat2x3.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat2x4.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat3x2.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat3x3.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat3x4.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat4x2.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat4x3.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\mat4x4.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\matrix.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\packing.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\trigonometric.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\vec2.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\vec3.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\vec4.hpp" />
+    <ClInclude Include="..\thirdPart\include\glm\vector_relational.hpp" />
+    <ClInclude Include="..\thirdPart\include\imgui\imconfig.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\imgui.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\imgui_internal.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\stb_rect_pack.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\stb_textedit.h" />
+    <ClInclude Include="..\thirdPart\include\imgui\stb_truetype.h" />
     <ClInclude Include="src\MyVertices.h" />
     <ClInclude Include="src\MyWindow.h" />
     <ClInclude Include="src\Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\LightFragShader.fs" />
+    <None Include="shader\LightVertexShader.vs" />
+    <None Include="shader\ObjFragPhongShader.fs" />
+    <None Include="shader\ObjVertexPhongShader.vs" />
+    <None Include="shader\PlaneFragShader.fs" />
+    <None Include="shader\PlaneVertexShader.vs" />
+    <None Include="shader\QuadFragShader.fs" />
+    <None Include="shader\QuadVertexShader.vs" />
+    <None Include="shader\SimpleDepthShader.fs" />
+    <None Include="shader\SimpleDepthShader.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\thirdPart\include\glm\CMakeLists.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

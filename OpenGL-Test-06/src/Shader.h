@@ -54,6 +54,7 @@ public:
 		} catch (exception) {
 			cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << endl;
 		}
+		cout << "Test " << endl;
 		//  将着色器代码转化为c字符数组
 		const char* vertexShaderCode = vertexCode.c_str();
 		const char* fragShaderCode = fragCode.c_str();

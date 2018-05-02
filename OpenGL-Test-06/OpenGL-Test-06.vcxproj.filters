@@ -13,10 +13,40 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="shader">
+      <UniqueIdentifier>{02de5aee-d71e-446a-a8a7-9c3711561889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\glm">
+      <UniqueIdentifier>{d3302353-5efa-4275-af1b-f38bac742582}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\imgui">
+      <UniqueIdentifier>{05a2c7b3-a299-487a-bfe9-5a3f3dc2435d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\glad">
+      <UniqueIdentifier>{f2bbae3b-0ee5-4e49-a26a-030b1a4bbd88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\glfw">
+      <UniqueIdentifier>{9892ecac-227d-4f72-b67f-9cd64aea5d10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdPart\include\glad\glad.c">
+      <Filter>include\glad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdPart\include\imgui\imgui.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_demo.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_draw.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdPart\include\imgui\imgui_impl_glfw_gl3.cpp">
+      <Filter>include\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -29,5 +59,135 @@
     <ClInclude Include="src\MyVertices.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glad\glad.h">
+      <Filter>include\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\imconfig.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\imgui.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\imgui_impl_glfw_gl3.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\imgui_internal.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\stb_rect_pack.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\stb_textedit.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\imgui\stb_truetype.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\common.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\exponential.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\ext.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\fwd.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\geometric.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\glm.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\integer.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat2x2.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat2x3.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat2x4.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat3x2.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat3x3.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat3x4.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat4x2.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat4x3.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\mat4x4.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\matrix.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\packing.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\trigonometric.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\vec2.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\vec3.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\vec4.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdPart\include\glm\vector_relational.hpp">
+      <Filter>include\glm</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\LightFragShader.fs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\LightVertexShader.vs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\ObjFragPhongShader.fs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\ObjVertexPhongShader.vs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\PlaneFragShader.fs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\PlaneVertexShader.vs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\SimpleDepthShader.fs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\SimpleDepthShader.vs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\QuadFragShader.fs">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="shader\QuadVertexShader.vs">
+      <Filter>shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\thirdPart\include\glm\CMakeLists.txt">
+      <Filter>include\glm</Filter>
+    </Text>
   </ItemGroup>
 </Project>
